@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 
 @Entity
 public class Video {
@@ -17,14 +18,40 @@ public class Video {
 	private String description;
 	private String videoPath;
 	private Date uploadDate;
-	public Video(int id, String title, String description, String videoPath, Date uploadDate) {
+	private String imageType;
+	@Lob
+	private byte[] imageFile;
+	
+	public Video(int id, String title, String description, String videoPath, Date uploadDate,byte[] imageFile,String imageType) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.videoPath = videoPath;
 		this.uploadDate = uploadDate;
+		this.imageFile = imageFile;
+		this.imageType =imageType;
 	}
+	
+	
+	public String getImageType() {
+		return imageType;
+	}
+
+
+	public void setImageType(String imageType) {
+		this.imageType = imageType;
+	}
+
+
+	public byte[] getImageFile() {
+		return imageFile;
+	}
+
+	public void setImageFile(byte[] bs) {
+		this.imageFile = bs;
+	}
+
 	public Video() {
 		super();
 	}
